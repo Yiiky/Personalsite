@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Project thumbnail placeholder 1">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e1320"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g1)"/>
+  <g stroke="#2a3142" fill="none">
+    <rect x="220" y="180" width="1160" height="540" rx="16"/>
+    <path d="M220 300h1160M220 420h1160M220 540h1160"/>
+  </g>
+  <text x="50%" y="820" text-anchor="middle" fill="#a7adbb" font-family="Segoe UI, Roboto, Helvetica, Arial" font-size="28">Replace with your project image</text>
+</svg>
+
+
