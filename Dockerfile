@@ -3,10 +3,11 @@ FROM nginx:alpine
 # Copy static site
 COPY . /usr/share/nginx/html
 
-# Copy custom config
-COPY default.conf /etc/nginx/conf.d/default.conf
+# Copy template config
+COPY default.conf.template /etc/nginx/templates/default.conf.template
 
-# Koyeb will use $PORT (usually 8000)
+# Expose the dynamic port
 EXPOSE 8000
 
-CMD ["nginx", "-g", "daemon off;"]
+# Start Nginx (envsubst will replace ${PORT})
+CMD ["sh", "-c", "envsubst < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
