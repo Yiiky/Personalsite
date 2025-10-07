@@ -3,13 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio personale di Alex">
-    <title>Alex — Portfolio</title>
+    <meta name="description" content="Sviluppatore web specializzato in e-commerce e siti web professionali. Alex crea soluzioni digitali moderne, performanti e ottimizzate per il tuo business.">
+    <meta name="keywords" content="sviluppatore web, e-commerce, siti web professionali, sviluppo web, portfolio, business online, web design">
+    <meta name="author" content="Alex">
+    <meta property="og:title" content="Alex - Sviluppatore Web Professionale">
+    <meta property="og:description" content="Sviluppatore web esperto specializzato in e-commerce e siti web professionali. Soluzioni digitali moderne e performanti per il tuo business.">
+    <meta property="og:type" content="website">
+    <title>Alex - Sviluppatore Web Professionale | E-commerce & Siti Web</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
     <!-- Typography: uses system fonts for performance and simplicity -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#about">Vai al contenuto</a>
@@ -26,8 +40,9 @@
 
         <ul id="nav-menu" class="nav-links">
           <!-- Update section names/ids below as needed -->
-          <li><a href="#about">Chi sono</a></li>
-          <li><a href="#collaborations">Collaborazioni</a></li>
+          <li><a href="#about">Home</a></li>
+          <li><a href="#testimonials">Testimonianze</a></li>
+          <li><a href="#process">Come funziona</a></li>
           <li><a href="#portfolio">Servizi</a></li>
           <li><a href="#contact">Contatti</a></li>
         </ul>
@@ -38,25 +53,73 @@
       <section id="about" class="section section--first reveal">
         <div class="container grid grid--2">
           <div class="about__text">
-            <h1 class="h1">Ciao, sono <span class="accent">Alex</span>.</h1>
+            <h1 class="h1">Sviluppatore Web <span class="accent">Professionale</span> per il tuo successo digitale</h1>
             <p class="lead">
-              Creo esperienze digitali pulite e mirate, con attenzione a accessibilità,
-              performance e un design minimalista.
+              Creo siti web e-commerce moderni e performanti che trasformano il tuo business online. 
+              <strong>Design responsive, ottimizzazione SEO e conversioni</strong> sono la mia specialità. 
+              Soluzioni personalizzate per risultati concreti.
             </p>
             <div class="about__actions">
-              <!-- Update links below -->
-              <a class="button" href="#portfolio">Vedi servizi</a>
-              <a class="button button--ghost" href="#contact">Contattami</a>
+              <a class="button button--primary" href="#contact">Inizia il tuo progetto</a>
+              <a class="button button--secondary" href="#portfolio">Vedi i miei lavori</a>
             </div>
           </div>
           <!-- Immagine profilo rimossa su richiesta -->
         </div>
       </section>
 
+      <section id="testimonials" class="section reveal">
+        <div class="container">
+          <h2 class="h2 section__title">Cosa dicono i miei clienti</h2>
+          <p class="section__subtitle">Testimonianze reali da aziende che hanno visto crescere il loro business online.</p>
+          
+          <div class="testimonials__grid">
+            <div class="testimonial">
+              <div class="testimonial__content">
+                <p>"La professionalità e l'attenzione ai dettagli di Alex sono impressionanti. Il sito che ha creato per noi è perfetto: design moderno, ottimizzato e gestisce tutto lui. Un grande!"</p>
+              </div>
+              <div class="testimonial__author">
+                <img src="https://i.imgur.com/keo8qGD.png" alt="C. S. & I. P." class="testimonial__avatar" referrerpolicy="no-referrer">
+                <div class="testimonial__info">
+                  <h4>C. S. & I. P.</h4>
+                  <span>Fondatrici Zerodosi</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial__content">
+                <p>"Alex ha migliorato la mia presenza online. Il nuovo e-commerce è molto elegante. Per ogni cosa c'è lui, sempre disponibile e pronto a tutto, un professionista a tutti gli effetti."</p>
+              </div>
+              <div class="testimonial__author">
+                <img src="https://i.imgur.com/Q3yf1NR.png" alt="Paolo" class="testimonial__avatar" referrerpolicy="no-referrer">
+                <div class="testimonial__info">
+                  <h4>Paolo C.</h4>
+                  <span>Biker Pablos23</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial__content">
+                <p>"Dalla progettazione alla consegna, Alex è stato impeccabile. Il nostro negozio online ora compete con i grandi brand. ROI eccellente e supporto continuo. Un investimento che vale ogni euro!"</p>
+              </div>
+              <div class="testimonial__author">
+                <img src="https://i.imgur.com/3UKR5v8.png" alt="Antonio" class="testimonial__avatar" referrerpolicy="no-referrer">
+                <div class="testimonial__info">
+                  <h4>Antonio C.</h4>
+                  <span>AutoStore Pneumatici</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="collaborations" class="section reveal">
         <div class="container">
-          <h2 class="h2 section__title">Collaborazioni e Clienti</h2>
-          <p class="section__subtitle">Persone e team con cui ho lavorato.</p>
+          <h2 class="h2 section__title">Aziende che si fidano di me</h2>
+          <p class="section__subtitle">Brand e imprese che hanno scelto le mie soluzioni web per crescere online.</p>
           <!-- CLIENTS GRID: replace logos with your clients. SVGs recommended. -->
           <ul class="clients__grid" role="list">
             <li class="clients__item">
@@ -93,85 +156,139 @@
         </div>
       </section>
 
+      <section id="process" class="section reveal">
+        <div class="container">
+          <h2 class="h2 section__title">Il mio approccio professionale</h2>
+          <p class="section__subtitle">Un processo collaudato per garantire il successo del tuo progetto web.</p>
+          
+          <div class="process__grid">
+            <div class="process__step">
+              <div class="process__number">1</div>
+              <h3>Consulenza e Analisi</h3>
+              <p>Analizziamo insieme le tue esigenze, obiettivi e target per definire la strategia migliore.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__number">2</div>
+              <h3>Progettazione e Sviluppo</h3>
+              <p>Creo il tuo sito web con tecnologie moderne, design responsive e ottimizzazioni avanzate.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__number">3</div>
+              <h3>Lancio e Supporto</h3>
+              <p>Deploy del progetto, formazione e supporto continuo per massimizzare i risultati.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="portfolio" class="section reveal">
         <div class="container">
-          <h2 class="h2 section__title">Servizi</h2>
-          <p class="section__subtitle">Cosa posso fare per il tuo business.</p>
+          <h2 class="h2 section__title">I miei servizi</h2>
+          <p class="section__subtitle">Soluzioni web personalizzate per privati e piccole aziende che vogliono crescere online.</p>
 
           <!-- PORTFOLIO GRID -->
-          <!-- To edit: Duplicate a .card in .portfolio__grid, update href, img, title, and tags -->
           <div class="portfolio__grid">
             <article class="card">
-              <a class="card__link" href="#" target="_blank" rel="noopener noreferrer">
+              <a class="card__link" href="#contact" rel="noopener noreferrer">
                 <figure class="card__figure">
-                  <img src="assets/portfolio-1.svg" alt="Servizio E‑Commerce" loading="lazy">
+                  <img src="https://i.imgur.com/Wu6qIWp.png" alt="E-commerce per Privati e PMI" loading="lazy" referrerpolicy="no-referrer">
                 </figure>
                 <div class="card__body">
-                  <h3 class="card__title">E‑Commerce</h3>
-                  <p class="card__tags">Sviluppo • Vendite online</p>
+                  <h3 class="card__title">E-commerce per Privati e PMI</h3>
+                  <p class="card__tags">Negozi online personalizzati • Gestione semplificata • Prezzi accessibili</p>
                 </div>
               </a>
             </article>
 
             <article class="card">
-              <a class="card__link" href="#" target="_blank" rel="noopener noreferrer">
+              <a class="card__link" href="#contact" rel="noopener noreferrer">
                 <figure class="card__figure">
-                  <img src="assets/portfolio-2.svg" alt="Servizio Gestione E‑Commerce" loading="lazy">
+                  <img src="https://i.imgur.com/wDo58eD.png" alt="Consulenza Web & Social" loading="lazy" referrerpolicy="no-referrer">
                 </figure>
                 <div class="card__body">
-                  <h3 class="card__title">Gestione E‑Commerce</h3>
-                  <p class="card__tags">Catalogo • Ordini • Integrazioni</p>
+                  <h3 class="card__title">Consulenza Web & Social</h3>
+                  <p class="card__tags">Strategia digitale • Social media • Crescita online</p>
                 </div>
               </a>
             </article>
-
-            <!-- Example: add more items by duplicating this block -->
-            <!--
-            <article class="card">
-              <a class="card__link" href="https://your-link.com" target="_blank" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <img src="assets/your-image.svg" alt="Your project thumbnail" loading="lazy">
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Project Title</h3>
-                  <p class="card__tags">Tech • Tags</p>
-                </div>
-              </a>
-            </article>
-            -->
           </div>
         </div>
       </section>
 
       <section id="contact" class="section reveal">
         <div class="container">
-          <h2 class="h2 section__title">Contatti</h2>
-          <p class="section__subtitle">Sono aperto a collaborazioni e nuove opportunità.</p>
+          <h2 class="h2 section__title">Iniziamo il tuo progetto</h2>
+          <p class="section__subtitle">Parlami del tuo business e scopriamo insieme come posso aiutarti a crescere online.</p>
+
+          <div class="cta__banner">
+            <h3>🚀 Pronto a trasformare la tua presenza digitale?</h3>
+            <p>Prenota una consulenza gratuita per discutere del tuo progetto e ricevere un preventivo personalizzato.</p>
+            <div class="cta__buttons">
+              <a class="button button--primary button--large" href="https://wa.me/message/MDS43SLTSIKWM1" target="_blank" rel="noopener noreferrer">
+                📱 Prenota consulenza WhatsApp
+              </a>
+              <a class="button button--secondary button--large" href="mailto:contact@yiiky.store">
+                ✉️ Richiedi preventivo via email
+              </a>
+            </div>
+          </div>
 
           <div class="contact__grid">
-            <div>
-              <!-- Aggiorna i tuoi canali preferiti -->
-              <p>Scrivimi a <a href="mailto:contact@yiiky.store">contact@yiiky.store</a></p>
-              <p>Oppure su <a href="https://wa.me/message/MDS43SLTSIKWM1" target="_blank" rel="noopener noreferrer">WhatsApp</a>!</p>
+            <div class="contact__info">
+              <h3>Perché scegliere me?</h3>
+              <ul class="benefits__list">
+                <li>✅ Specializzato in privati e piccole aziende</li>
+                <li>✅ Prezzi accessibili e trasparenti</li>
+                <li>✅ E-commerce facili da gestire</li>
+                <li>✅ Supporto personalizzato e diretto</li>
+                <li>✅ Soluzioni su misura per il tuo budget</li>
+                <li>✅ Tempi di consegna rapidi</li>
+                <li>✅ Risultati concreti e misurabili</li>
+              </ul>
             </div>
 
-            <!-- Optional static form: replace action with your Formspree/Netlify form endpoint -->
+            <!-- Contact form -->
             <form class="form" action="https://formspree.io/f/your-id" method="POST">
-              <!-- To disable the form, remove it or set display:none in CSS -->
+              <h3>Richiedi un preventivo</h3>
               <label>
-                <span class="form__label">Nome</span>
-                <input class="input" type="text" name="name" placeholder="Il tuo nome" required>
+                <span class="form__label">Nome e Cognome *</span>
+                <input class="input" type="text" name="name" placeholder="Il tuo nome completo" required>
               </label>
               <label>
-                <span class="form__label">Email</span>
-                <input class="input" type="email" name="email" placeholder="mail@esempio.com" required>
+                <span class="form__label">Email *</span>
+                <input class="input" type="email" name="email" placeholder="la.tua@email.com" required>
               </label>
               <label>
-                <span class="form__label">Messaggio</span>
-                <textarea class="input input--textarea" name="message" rows="5" placeholder="Ciao…" required></textarea>
+                <span class="form__label">Azienda</span>
+                <input class="input" type="text" name="company" placeholder="Nome della tua azienda">
               </label>
-              <button class="button" type="submit">Invia</button>
-              <p class="form__note">Questo form invia i dati a un servizio esterno. Sostituisci l'URL o rimuovi il form.</p>
+              <label>
+                <span class="form__label">Tipo di progetto *</span>
+                <select class="input" name="project_type" required>
+                  <option value="">Seleziona il tipo di progetto</option>
+                  <option value="ecommerce">E-commerce per privati/PMI</option>
+                  <option value="consulting">Consulenza Web & Social</option>
+                  <option value="other">Altro</option>
+                </select>
+              </label>
+              <label>
+                <span class="form__label">Budget stimato</span>
+                <select class="input" name="budget">
+                  <option value="">Seleziona budget</option>
+                  <option value="500-1500">€500 - €1.500</option>
+                  <option value="1500-3000">€1.500 - €3.000</option>
+                  <option value="3000-5000">€3.000 - €5.000</option>
+                  <option value="5000+">€5.000+</option>
+                </select>
+              </label>
+              <label>
+                <span class="form__label">Descrizione del progetto *</span>
+                <textarea class="input input--textarea" name="message" rows="4" placeholder="Descrivi il tuo progetto, obiettivi e aspettative..." required></textarea>
+              </label>
+              <button class="button button--primary button--large" type="submit">
+                🎯 Richiedi preventivo gratuito
+              </button>
+              <p class="form__note">Risponderò entro 24 ore con un preventivo dettagliato!</p>
             </form>
           </div>
         </div>

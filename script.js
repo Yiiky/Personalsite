@@ -37,7 +37,7 @@
   document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
 
   // Highlight active nav link while scrolling
-  var sectionIds = ['about', 'portfolio', 'collaborations', 'contact'];
+  var sectionIds = ['about', 'testimonials', 'process', 'portfolio', 'contact'];
   var sections = sectionIds
     .map(function (id) { var el = document.getElementById(id); return el ? el : null; })
     .filter(Boolean);
@@ -58,6 +58,43 @@
 
   window.addEventListener('scroll', scrollHandler, { passive: true });
   scrollHandler();
+
+  // Analytics tracking for CTA clicks
+  document.querySelectorAll('.button--primary').forEach(function(button) {
+    button.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', {
+          'event_category': 'engagement',
+          'event_label': this.textContent.trim()
+        });
+      }
+    });
+  });
+
+  // Track form submissions
+  var form = document.querySelector('.form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submit', {
+          'event_category': 'conversion',
+          'event_label': 'contact_form'
+        });
+      }
+    });
+  }
+
+  // Track external link clicks
+  document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'external_link_click', {
+          'event_category': 'engagement',
+          'event_label': this.href
+        });
+      }
+    });
+  });
 })();
 
 
