@@ -50,7 +50,8 @@ a { color: inherit; text-decoration: none; }
 /* Header / Nav */
 .site-header { position: sticky; top: 0; z-index: 10; background: rgba(15,17,21,.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .nav { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
-.brand { font-weight: 600; letter-spacing: 0.3px; }
+.brand { font-weight: 600; letter-spacing: 0.3px; display: flex; align-items: center; gap: var(--space-3); }
+.brand__logo { width: 32px; height: 32px; object-fit: contain; }
 .nav-links { list-style: none; display: flex; gap: var(--space-5); margin: 0; padding: 0; }
 .nav-links a { color: var(--muted); padding: var(--space-3) var(--space-2); border-radius: 8px; transition: color .2s ease, background .2s ease; }
 .nav-links a:hover { color: var(--text); background: rgba(122,162,247,.08); }
