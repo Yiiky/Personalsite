@@ -126,6 +126,49 @@
       }
     });
   });
+
+  // Mobile menu UI detection and optimization
+  function optimizeMobileMenuForBrowser() {
+    var navLinks = document.querySelector('.nav-links');
+    var navFooter = document.querySelector('.nav-menu__footer');
+    
+    if (!navLinks || !navFooter) return;
+    
+    // Detect if browser supports modern viewport units
+    var supportsDvh = CSS.supports('height', '100dvh');
+    var supportsSafeArea = CSS.supports('padding', 'env(safe-area-inset-bottom)');
+    
+    // Fallback for browsers without modern CSS support
+    if (!supportsDvh || !supportsSafeArea) {
+      var viewportHeight = window.innerHeight;
+      var isLandscape = window.innerWidth > window.innerHeight;
+      
+      // Calculate appropriate bottom padding based on viewport
+      var bottomPadding = 80; // Base padding
+      
+      // Adjust for different screen sizes and orientations
+      if (viewportHeight < 600) {
+        bottomPadding = 60;
+      } else if (viewportHeight < 500) {
+        bottomPadding = 40;
+      }
+      
+      if (isLandscape) {
+        bottomPadding = Math.min(bottomPadding, 60);
+      }
+      
+      // Apply calculated padding
+      navLinks.style.paddingBottom = bottomPadding + 'px';
+      navFooter.style.paddingBottom = Math.max(bottomPadding * 0.6, 20) + 'px';
+    }
+  }
+  
+  // Run optimization on load and resize
+  optimizeMobileMenuForBrowser();
+  window.addEventListener('resize', optimizeMobileMenuForBrowser);
+  window.addEventListener('orientationchange', function() {
+    setTimeout(optimizeMobileMenuForBrowser, 100);
+  });
 })();
 
 
