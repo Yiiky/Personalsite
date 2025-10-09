@@ -249,6 +249,9 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav-links.is-open { 
@@ -416,10 +419,26 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   -webkit-transform: translateZ(0);
 }
 
-/* Hide mobile menu footer on desktop */
-@media (min-width: 641px) {
-  .nav-menu__footer {
-    display: none;
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure mobile menu content doesn't cause overflow */
+@media (max-width: 640px) {
+  .nav-links {
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+  
+  .nav-links.is-open {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
