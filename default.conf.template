@@ -2,8 +2,42 @@ server {
     listen       ${PORT};
     server_name  localhost;
 
-    location / {
-        root   /usr/share/nginx/html;
-        index  index.html;
+    root   /usr/share/nginx/html;
+    index  index.html;
+
+    # Handle clean URLs - redirect .html to clean URLs
+    location ~ ^/(.+)\.html$ {
+        return 301 /$1;
     }
+
+    # Handle root domain redirect to /home
+    location = / {
+        return 301 /home;
+    }
+
+    # Handle /home route
+    location = /home {
+        try_files /index.html =404;
+    }
+
+    # Handle /testimonianze route
+    location = /testimonianze {
+        try_files /testimonianze.html =404;
+    }
+
+    # Handle other clean URLs
+    location / {
+        try_files $uri $uri.html $uri/ =404;
+    }
+
+    # Cache static assets
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Security headers
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options DENY;
+    add_header X-XSS-Protection "1; mode=block";
 }
