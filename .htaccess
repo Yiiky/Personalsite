@@ -1,33 +1,47 @@
 # Enable URL Rewriting
 RewriteEngine On
 
+# Redirect .html to clean URLs (must be first)
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
 # Handle root domain redirect to /home
 RewriteCond %{REQUEST_URI} ^/$
 RewriteRule ^(.*)$ /home [R=301,L]
 
-# Clean URLs - Remove .html extension
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
-
 # Special case for home page
 RewriteRule ^home$ index.html [NC,L]
 
-# Redirect .html to clean URLs
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-RewriteRule ^ /%1 [NC,L,R=301]
+# Clean URLs - Remove .html extension for other pages
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
 # MIME Types
 AddType text/css .css
 AddType application/javascript .js
 
 # Cache Control
-<FilesMatch "\.(css|js)$">
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2)$">
     Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+
+<FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=3600"
 </FilesMatch>
 
 # Enable GZIP compression
 <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE text/css
     AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Security headers for performance
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
 </IfModule>
