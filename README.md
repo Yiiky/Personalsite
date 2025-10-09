@@ -18,19 +18,23 @@ Open `index.html` and search for these comments:
 
 Colors and spacing: adjust CSS variables in `style.css` under `:root` (e.g. `--accent`).
 
-## Deploy to Koyeb (Simple Docker)
+## Deploy to Koyeb (Docker - Recommended)
 1. Push this folder to a Git repository (GitHub/GitLab).
 2. In Koyeb, create a new App → choose your repo.
 3. Select "Docker" as the build method.
-4. Deploy! Koyeb will automatically use port 8000.
+4. Deploy! The Dockerfile is configured for port 8000.
 
-## Deploy to Koyeb (Static Site - Even Simpler)
+## Deploy to Koyeb (Static Site)
 1. Push this folder to a Git repository (GitHub/GitLab).
 2. In Koyeb, create a new App → choose your repo.
 3. Select a Static Site (no runtime).
-4. Deploy! All files are served as-is with .html extensions visible.
+4. Deploy! All files are served as-is.
 
-**Note**: This site uses simple HTML files with visible .html extensions. No URL rewriting, no complications.
+## Debug Steps
+If the site doesn't load:
+1. Check Koyeb logs for errors
+2. Verify all files are in the repository (index.html, testimonianze.html, assets/, etc.)
+3. Check that the Dockerfile is in the root directory
 
 ## Accessibility & performance
 - Semantic headings, skip link, reduced motion support
