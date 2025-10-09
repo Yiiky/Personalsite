@@ -16,25 +16,14 @@
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
-    
-    // Restore scroll position
-    var scrollY = document.body.dataset.scrollY || 0;
-    document.body.removeAttribute('data-scroll-y');
-    window.scrollTo(0, parseInt(scrollY));
   }
   
   function openMobileMenu() {
-    // Store current scroll position
-    var scrollY = window.scrollY;
-    
     navMenu.classList.add('is-open');
     navBackdrop.classList.add('is-open');
     navToggle.classList.add('is-open');
     navToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
-    
-    // Store scroll position for restoration
-    document.body.dataset.scrollY = scrollY;
   }
   
   if (navToggle && navMenu && navBackdrop) {
