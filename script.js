@@ -15,7 +15,7 @@
     navBackdrop.classList.remove('is-open');
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('menu-open');
+    document.body.style.overflow = '';
   }
   
   function openMobileMenu() {
@@ -23,7 +23,7 @@
     navBackdrop.classList.add('is-open');
     navToggle.classList.add('is-open');
     navToggle.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('menu-open');
+    document.body.style.overflow = 'hidden';
   }
   
   if (navToggle && navMenu && navBackdrop) {
