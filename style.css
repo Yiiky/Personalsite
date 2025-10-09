@@ -48,7 +48,18 @@ a { color: inherit; text-decoration: none; }
 .skip-link:focus { left: var(--space-5); top: var(--space-5); width: auto; height: auto; background: var(--surface); color: var(--text); padding: var(--space-3) var(--space-4); border-radius: 6px; }
 
 /* Header / Nav */
-.site-header { position: sticky; top: 0; z-index: 10; background: rgba(15,17,21,.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.site-header { 
+  position: sticky; 
+  position: -webkit-sticky;
+  top: 0; 
+  z-index: 1000; 
+  background: rgba(15,17,21,.95); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  will-change: transform;
+  transform: translateZ(0);
+}
 .nav { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
 .brand { font-weight: 600; letter-spacing: 0.3px; display: flex; align-items: center; gap: var(--space-3); }
 .brand__logo { width: 32px; height: 32px; object-fit: contain; }
@@ -249,9 +260,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
   }
   
   .nav-links.is-open { 
@@ -334,10 +343,10 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     padding: var(--space-5) 0 calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
     border-top: 1px solid rgba(255,255,255,.1);
     list-style: none;
-    transform: translate3d(40px, 0, 0);
+    transform: translate3d(50px, 0, 0);
     opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -350,7 +359,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   .nav-links.is-open .nav-menu__footer {
     transform: translate3d(0, 0, 0);
     opacity: 1;
-    transition-delay: 0.28s;
+    transition-delay: 0.2s;
   }
   
   .nav-menu__brand {
@@ -428,17 +437,11 @@ body.menu-open {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Ensure mobile menu content doesn't cause overflow */
+/* Mobile menu content optimization */
 @media (max-width: 640px) {
   .nav-links {
     max-height: 100vh;
     max-height: 100dvh;
-  }
-  
-  .nav-links.is-open {
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
