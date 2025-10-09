@@ -260,7 +260,9 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav-links.is-open { 
@@ -343,7 +345,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     padding: var(--space-5) 0 calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
     border-top: 1px solid rgba(255,255,255,.1);
     list-style: none;
-    transform: translate3d(50px, 0, 0);
+    transform: translate3d(30px, 0, 0);
     opacity: 0;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
                 opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -423,16 +425,43 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
 .nav-toggle,
 .nav-links,
 .nav-backdrop,
-.nav-links a {
+.nav-links a,
+.nav-menu__footer {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
 
-/* Mobile menu content optimization */
+/* Additional smooth animation optimizations */
+.nav-menu__footer,
+.nav-menu__brand,
+.nav-menu__logo,
+.nav-menu__name,
+.nav-menu__tagline {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure mobile menu content doesn't cause overflow */
 @media (max-width: 640px) {
   .nav-links {
     max-height: 100vh;
     max-height: 100dvh;
+  }
+  
+  .nav-links.is-open {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -469,61 +498,6 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     .nav-menu__footer {
       padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
     }
-  }
-}
-
-/* Desktop navigation restoration */
-@media (min-width: 641px) {
-  .nav-menu__footer {
-    display: none;
-  }
-  
-  /* Ensure desktop navigation works properly */
-  .nav-links {
-    position: static !important;
-    display: flex !important;
-    flex-direction: row !important;
-    width: auto !important;
-    height: auto !important;
-    background: none !important;
-    backdrop-filter: none !important;
-    border: none !important;
-    padding: 0 !important;
-    transform: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    overflow: visible !important;
-    box-shadow: none !important;
-    z-index: auto !important;
-    max-height: none !important;
-  }
-  
-  .nav-links a {
-    position: static !important;
-    transform: none !important;
-    opacity: 1 !important;
-    transition: color .2s ease, background .2s ease !important;
-    padding: var(--space-3) var(--space-2) !important;
-    min-height: auto !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    border-radius: 8px !important;
-    background: none !important;
-    border: none !important;
-    font-weight: normal !important;
-    font-size: 1rem !important;
-  }
-  
-  .nav-links.is-open {
-    transform: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  
-  .nav-links.is-open a {
-    transform: none !important;
-    opacity: 1 !important;
-    transition-delay: 0s !important;
   }
 }
 
