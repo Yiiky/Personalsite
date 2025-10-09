@@ -229,7 +229,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     width: 280px; 
     height: 100vh; 
     height: 100dvh; /* Dynamic viewport height for mobile browsers */
-    background: linear-gradient(180deg, rgba(19,23,34,.98), rgba(15,17,21,.95)); 
+    background: rgba(15,17,21,.98); 
     backdrop-filter: blur(20px);
     border-left: 1px solid var(--border); 
     padding: 80px var(--space-6) calc(env(safe-area-inset-bottom, 0px) + 80px);
@@ -340,7 +340,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     -webkit-backface-visibility: hidden;
     position: sticky;
     bottom: 0;
-    background: linear-gradient(180deg, transparent, rgba(15,17,21,.95) 20%);
+    background: rgba(15,17,21,.98);
     margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
   }
   
@@ -423,37 +423,39 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   }
 }
 
-/* Intelligent browser UI detection and adaptation */
-@supports (height: 100dvh) {
-  .nav-links {
-    height: 100dvh;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+/* Intelligent browser UI detection and adaptation - Mobile only */
+@media (max-width: 640px) {
+  @supports (height: 100dvh) {
+    .nav-links {
+      height: 100dvh;
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+    }
   }
-}
 
-/* Fallback for browsers without dvh support */
-@supports not (height: 100dvh) {
-  .nav-links {
-    height: 100vh;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+  /* Fallback for browsers without dvh support */
+  @supports not (height: 100dvh) {
+    .nav-links {
+      height: 100vh;
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+    }
   }
-}
 
-/* Additional browser-specific optimizations */
-@supports (padding: max(0px)) {
-  .nav-menu__footer {
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--space-5));
+  /* Additional browser-specific optimizations */
+  @supports (padding: max(0px)) {
+    .nav-menu__footer {
+      padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--space-5));
+    }
   }
-}
 
-/* iOS Safari specific adjustments */
-@supports (-webkit-touch-callout: none) {
-  .nav-links {
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
-  }
-  
-  .nav-menu__footer {
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
+  /* iOS Safari specific adjustments */
+  @supports (-webkit-touch-callout: none) {
+    .nav-links {
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+    }
+    
+    .nav-menu__footer {
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
+    }
   }
 }
 
