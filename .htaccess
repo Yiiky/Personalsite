@@ -1,10 +1,17 @@
 # Enable URL Rewriting
 RewriteEngine On
 
+# Handle root domain redirect to /home
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /home [R=301,L]
+
 # Clean URLs - Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Special case for home page
+RewriteRule ^home$ index.html [NC,L]
 
 # Redirect .html to clean URLs
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
