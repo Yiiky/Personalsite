@@ -9,12 +9,14 @@
   var navToggle = document.querySelector('.nav-toggle');
   var navMenu = document.getElementById('nav-menu');
   var navBackdrop = document.getElementById('nav-backdrop');
+  var navFooter = document.querySelector('.nav-menu__footer');
   
   function closeMobileMenu() {
     navMenu.classList.remove('is-open');
     navBackdrop.classList.remove('is-open');
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
+    if (navFooter) navFooter.classList.remove('is-open');
     document.body.style.overflow = '';
   }
   
@@ -23,6 +25,7 @@
     navBackdrop.classList.add('is-open');
     navToggle.classList.add('is-open');
     navToggle.setAttribute('aria-expanded', 'true');
+    if (navFooter) navFooter.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
   

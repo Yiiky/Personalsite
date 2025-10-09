@@ -232,7 +232,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     background: rgba(15,17,21,.98); 
     backdrop-filter: blur(20px);
     border-left: 1px solid var(--border); 
-    padding: 80px var(--space-6) calc(env(safe-area-inset-bottom, 0px) + 80px);
+    padding: 80px var(--space-6) var(--space-6);
     flex-direction: column; 
     gap: var(--space-3); 
     display: flex;
@@ -327,26 +327,30 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   
   /* Menu footer branding - Mobile only */
   .nav-menu__footer {
-    margin-top: auto;
-    padding: var(--space-5) 0 calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 280px;
+    padding: var(--space-5) var(--space-6) calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
     border-top: 1px solid rgba(255,255,255,.1);
-    list-style: none;
-    transform: translate3d(40px, 0, 0);
+    background: rgba(15,17,21,.98);
+    backdrop-filter: blur(20px);
+    transform: translate3d(100%, 0, 0);
     opacity: 0;
+    visibility: hidden;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    position: sticky;
-    bottom: 0;
-    background: rgba(15,17,21,.98);
-    margin-bottom: calc(-1 * env(safe-area-inset-bottom, 0px));
+    z-index: 1000;
   }
   
-  .nav-links.is-open .nav-menu__footer {
+  .nav-menu__footer.is-open {
     transform: translate3d(0, 0, 0);
     opacity: 1;
+    visibility: visible;
     transition-delay: 0.28s;
   }
   
@@ -419,7 +423,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
 /* Hide mobile menu footer on desktop */
 @media (min-width: 641px) {
   .nav-menu__footer {
-    display: none;
+    display: none !important;
   }
 }
 
