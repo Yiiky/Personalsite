@@ -5,24 +5,8 @@ server {
     root   /usr/share/nginx/html;
     index  index.html;
 
-    # Handle root domain redirect to /home
-    location = / {
-        return 301 /home;
-    }
-
-    # Handle /home route
-    location = /home {
-        try_files /index.html =404;
-    }
-
-    # Handle /testimonianze route
-    location = /testimonianze {
-        try_files /testimonianze.html =404;
-    }
-
-    # Handle all other requests
     location / {
-        try_files $uri $uri.html $uri/ =404;
+        try_files $uri $uri/ =404;
     }
 
     # Cache static assets
