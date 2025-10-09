@@ -18,7 +18,16 @@ Open `index.html` and search for these comments:
 
 Colors and spacing: adjust CSS variables in `style.css` under `:root` (e.g. `--accent`).
 
-## Deploy to Koyeb (no Docker)
+## Deploy to Koyeb (with Docker)
+1. Push this folder to a Git repository (GitHub/GitLab).
+2. In Koyeb, create a new App → choose your repo.
+3. Select "Docker" as the build method.
+4. Set the Dockerfile path to `./Dockerfile` (or leave default).
+5. Configure environment variables:
+   - PORT: 8000
+6. Deploy. The site will be served via Nginx on port 8000.
+
+## Deploy to Koyeb (Static Site - Alternative)
 1. Push this folder to a Git repository (GitHub/GitLab).
 2. In Koyeb, create a new App → choose your repo.
 3. Select a Static Site (no runtime). Set:
@@ -27,7 +36,7 @@ Colors and spacing: adjust CSS variables in `style.css` under `:root` (e.g. `--a
    - Error document: `index.html` (optional single-page fallback)
 4. Deploy. All assets are referenced with relative paths and require no server.
 
-Alternative: drag-and-drop deploy using Koyeb static hosting if available: upload the contents of this folder as-is.
+Note: For static deployment, the `.htaccess` file will be ignored as Koyeb uses Nginx, not Apache.
 
 ## Accessibility & performance
 - Semantic headings, skip link, reduced motion support
