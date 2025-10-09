@@ -5,20 +5,51 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Mobile nav toggle
+  // Mobile nav toggle with cool animations
   var navToggle = document.querySelector('.nav-toggle');
   var navMenu = document.getElementById('nav-menu');
-  if (navToggle && navMenu) {
+  var navBackdrop = document.getElementById('nav-backdrop');
+  
+  function closeMobileMenu() {
+    navMenu.classList.remove('is-open');
+    navBackdrop.classList.remove('is-open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  
+  function openMobileMenu() {
+    navMenu.classList.add('is-open');
+    navBackdrop.classList.add('is-open');
+    navToggle.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  if (navToggle && navMenu && navBackdrop) {
     navToggle.addEventListener('click', function () {
-      var isOpen = navMenu.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
+      if (navMenu.classList.contains('is-open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
+    
+    // Close menu when clicking backdrop
+    navBackdrop.addEventListener('click', closeMobileMenu);
+    
     // Close menu after clicking a link
     navMenu.addEventListener('click', function (e) {
       var target = e.target;
       if (target && target.matches('a')) {
-        navMenu.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
+        closeMobileMenu();
+      }
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
+        closeMobileMenu();
       }
     });
   }

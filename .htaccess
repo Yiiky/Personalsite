@@ -1,3 +1,15 @@
+# Enable URL Rewriting
+RewriteEngine On
+
+# Clean URLs - Remove .html extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect .html to clean URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
 # MIME Types
 AddType text/css .css
 AddType application/javascript .js

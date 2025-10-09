@@ -6,6 +6,9 @@
     <meta name="description" content="Sviluppatore web specializzato in e-commerce e siti web professionali. Alex crea soluzioni digitali moderne, performanti e ottimizzate per il tuo business.">
     <meta name="keywords" content="sviluppatore web, e-commerce, siti web professionali, sviluppo web, portfolio, business online, web design">
     <meta name="author" content="Alex">
+    <meta name="theme-color" content="#7aa2f7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta property="og:title" content="Alex - Sviluppatore Web Professionale">
     <meta property="og:description" content="Sviluppatore web esperto specializzato in e-commerce e siti web professionali. Soluzioni digitali moderne e performanti per il tuo business.">
     <meta property="og:type" content="website">
@@ -21,6 +24,8 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="./style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
     <!-- Typography: uses system fonts for performance and simplicity -->
     <link rel="stylesheet" href="./style.css">
@@ -50,10 +55,11 @@
           <span class="bar"></span>
         </button>
 
+        <div class="nav-backdrop" id="nav-backdrop"></div>
         <ul id="nav-menu" class="nav-links">
           <!-- Update section names/ids below as needed -->
           <li><a href="#about">Home</a></li>
-          <li><a href="#testimonials">Testimonianze</a></li>
+          <li><a href="./testimonianze.html">Testimonianze</a></li>
           <li><a href="#process">Come funziona</a></li>
           <li><a href="#portfolio">Servizi</a></li>
           <li><a href="#contact">Contatti</a></li>
@@ -80,6 +86,31 @@
         </div>
       </section>
 
+      <section id="process" class="section reveal">
+        <div class="container">
+          <h2 class="h2 section__title">Il mio approccio professionale</h2>
+          <p class="section__subtitle">Un processo collaudato per garantire il successo del tuo progetto web.</p>
+          
+          <div class="process__grid">
+            <div class="process__step">
+              <div class="process__number">1</div>
+              <h3>Consulenza e Analisi</h3>
+              <p>Analizziamo insieme le tue esigenze, obiettivi e target per definire la strategia migliore.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__number">2</div>
+              <h3>Progettazione e Sviluppo</h3>
+              <p>Creo il tuo sito web con tecnologie moderne, design responsive e ottimizzazioni avanzate.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__number">3</div>
+              <h3>Lancio e Supporto</h3>
+              <p>Deploy del progetto, formazione e supporto continuo per massimizzare i risultati.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="testimonials" class="section reveal">
         <div class="container">
           <h2 class="h2 section__title">Cosa dicono i miei clienti</h2>
@@ -88,42 +119,24 @@
           <div class="testimonials__grid">
             <div class="testimonial">
               <div class="testimonial__content">
-                <p>"La professionalità e l'attenzione ai dettagli di Alex sono impressionanti. Il sito che ha creato per noi è perfetto: design moderno, ottimizzato e gestisce tutto lui. Un grande!"</p>
-              </div>
-              <div class="testimonial__author">
-                <img src="https://i.imgur.com/keo8qGD.png" alt="C. S. & I. P." class="testimonial__avatar" referrerpolicy="no-referrer">
-                <div class="testimonial__info">
-                  <h4>C. S. & I. P.</h4>
-                  <span>Fondatrici Zerodosi</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial">
-              <div class="testimonial__content">
-                <p>"Alex ha migliorato la mia presenza online. Il nuovo e-commerce è molto elegante. Per ogni cosa c'è lui, sempre disponibile e pronto a tutto, un professionista a tutti gli effetti."</p>
-              </div>
-              <div class="testimonial__author">
-                <img src="https://i.imgur.com/Q3yf1NR.png" alt="Paolo" class="testimonial__avatar" referrerpolicy="no-referrer">
-                <div class="testimonial__info">
-                  <h4>Paolo C.</h4>
-                  <span>Biker Pablos23</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial">
-              <div class="testimonial__content">
-                <p>"Dalla progettazione alla consegna, Alex è stato impeccabile. Il nostro negozio online ora compete con i grandi brand. ROI eccellente e supporto continuo. Un investimento che vale ogni euro!"</p>
+                <p>"Alex è una persona estremamente competente, sia tecnicamente che moralmente. Prima di tutto cerca di capire il progetto e la persona che ha davanti, proponendo soluzioni concrete senza chiedere cifre esagerate come molti altri. Mette passione in ciò che fa, si immedesima nel cliente e realizza ogni idea nel miglior modo possibile..."</p>
               </div>
               <div class="testimonial__author">
                 <img src="https://i.imgur.com/3UKR5v8.png" alt="Antonio" class="testimonial__avatar" referrerpolicy="no-referrer">
                 <div class="testimonial__info">
-                  <h4>Antonio C.</h4>
+                  <h4>Antonio Chiarella</h4>
                   <span>AutoStore Pneumatici</span>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="testimonials__cta">
+            <h3>🎯 Altri clienti hanno visto risultati simili</h3>
+            <p>Scopri come altri imprenditori hanno trasformato il loro business online con le mie soluzioni web.</p>
+            <a class="button button--primary button--large" href="./testimonianze.html">
+              📈 Leggi tutte le testimonianze
+            </a>
           </div>
         </div>
       </section>
@@ -165,31 +178,6 @@
               <span class="clients__label">Obiettivo Benessere</span>
             </li>
           </ul>
-        </div>
-      </section>
-
-      <section id="process" class="section reveal">
-        <div class="container">
-          <h2 class="h2 section__title">Il mio approccio professionale</h2>
-          <p class="section__subtitle">Un processo collaudato per garantire il successo del tuo progetto web.</p>
-          
-          <div class="process__grid">
-            <div class="process__step">
-              <div class="process__number">1</div>
-              <h3>Consulenza e Analisi</h3>
-              <p>Analizziamo insieme le tue esigenze, obiettivi e target per definire la strategia migliore.</p>
-            </div>
-            <div class="process__step">
-              <div class="process__number">2</div>
-              <h3>Progettazione e Sviluppo</h3>
-              <p>Creo il tuo sito web con tecnologie moderne, design responsive e ottimizzazioni avanzate.</p>
-            </div>
-            <div class="process__step">
-              <div class="process__number">3</div>
-              <h3>Lancio e Supporto</h3>
-              <p>Deploy del progetto, formazione e supporto continuo per massimizzare i risultati.</p>
-            </div>
-          </div>
         </div>
       </section>
 
