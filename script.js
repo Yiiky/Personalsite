@@ -9,24 +9,68 @@
   var navToggle = document.querySelector('.nav-toggle');
   var navMenu = document.getElementById('nav-menu');
   var navBackdrop = document.getElementById('nav-backdrop');
+  var navAnimationOverlay = document.getElementById('nav-animation-overlay');
   var navFooter = document.querySelector('.nav-menu__footer');
   
   function closeMobileMenu() {
-    navMenu.classList.remove('is-open');
-    navBackdrop.classList.remove('is-open');
-    navToggle.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    if (navFooter) navFooter.classList.remove('is-open');
-    document.body.style.overflow = '';
+    // Trigger closing animation first
+    if (navAnimationOverlay) {
+      navAnimationOverlay.classList.remove('is-active');
+      navAnimationOverlay.classList.add('is-closing');
+      
+      // Close menu after closing animation completes
+      setTimeout(function() {
+        navMenu.classList.remove('is-open');
+        navBackdrop.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        if (navFooter) navFooter.classList.remove('is-open');
+        document.body.style.overflow = '';
+        
+        // Remove closing class after menu is closed
+        navAnimationOverlay.classList.remove('is-closing');
+      }, 700); // Start menu close 300ms before animation ends (1000ms - 300ms)
+    } else {
+      // Fallback if no animation overlay
+      navMenu.classList.remove('is-open');
+      navBackdrop.classList.remove('is-open');
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      if (navFooter) navFooter.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
   }
   
   function openMobileMenu() {
+    // First, make the menu visible
     navMenu.classList.add('is-open');
     navBackdrop.classList.add('is-open');
     navToggle.classList.add('is-open');
     navToggle.setAttribute('aria-expanded', 'true');
     if (navFooter) navFooter.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    
+    // Then trigger the animation after a short delay to sync with menu visibility
+    if (navAnimationOverlay) {
+      // Get the position of the nav toggle button relative to the nav-menu container
+      var toggleRect = navToggle.getBoundingClientRect();
+      var menuRect = navMenu.getBoundingClientRect();
+      
+      // Calculate position relative to the menu container
+      var centerX = toggleRect.left + toggleRect.width / 2 - menuRect.left;
+      var centerY = toggleRect.top + toggleRect.height / 2 - menuRect.top;
+      
+      // Set CSS custom properties for the animation origin
+      navAnimationOverlay.style.setProperty('--animation-x', centerX + 'px');
+      navAnimationOverlay.style.setProperty('--animation-y', centerY + 'px');
+      
+      // Delay animation start to sync with menu visibility
+      setTimeout(function() {
+        // Remove any existing classes and add opening animation
+        navAnimationOverlay.classList.remove('is-closing');
+        navAnimationOverlay.classList.add('is-active');
+      }, 100); // Small delay to let menu become visible
+    }
   }
   
   if (navToggle && navMenu && navBackdrop) {

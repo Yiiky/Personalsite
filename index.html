@@ -22,6 +22,9 @@
     <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://i.imgur.com">
@@ -59,6 +62,9 @@
 
         <div class="nav-backdrop" id="nav-backdrop"></div>
         <div id="nav-menu" class="nav-links">
+          <div class="nav-animation-overlay" id="nav-animation-overlay">
+            <div class="nav-animation-circle"></div>
+          </div>
           <ul class="nav-menu__items">
             <!-- Update section names/ids below as needed -->
             <li><a href="#about">Home</a></li>
@@ -67,6 +73,16 @@
             <li><a href="#portfolio">Servizi</a></li>
             <li><a href="#contact">Contatti</a></li>
           </ul>
+          
+          <!-- Social icons - Mobile only -->
+          <div class="nav-menu__social">
+            <a href="https://instagram.com/yiiky.studio" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/message/MDS43SLTSIKWM1" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
           
           <!-- Menu footer branding - Mobile only -->
           <div class="nav-menu__footer">
