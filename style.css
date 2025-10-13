@@ -142,8 +142,8 @@ a { color: inherit; text-decoration: none; }
 .card__tags { margin: 0; color: var(--muted); font-size: .95rem; }
 
 /* Clients */
-.clients__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-5); padding: 0; margin: 0; list-style: none; align-items: center; }
-.clients__item { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-3); display: grid; gap: var(--space-3); transition: transform .2s ease, border-color .2s ease; overflow: hidden; }
+.clients__grid { display: flex; flex-wrap: wrap; gap: var(--space-5); padding: 0; margin: 0; list-style: none; align-items: center; justify-content: center; }
+.clients__item { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-3); display: grid; gap: var(--space-3); transition: transform .2s ease, border-color .2s ease; overflow: hidden; flex: 0 0 calc(20% - var(--space-5)); }
 .clients__item:hover { transform: translateY(-2px); border-color: #31384a; }
 .clients__media { display: block; width: 100%; height: 100%; min-height: 120px; aspect-ratio: 3 / 2; border-radius: 8px; overflow: hidden; }
 .clients__media img { width: 100%; height: 100%; object-fit: cover; filter: none; opacity: 1; display: block; }
@@ -240,8 +240,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
 /* Responsive */
 /* Responsive breakpoints for better layouts */
 @media (max-width: 1024px) {
-  .services__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .services__carousel {
     max-width: 800px;
   }
   
@@ -281,11 +280,6 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
 }
 
 @media (max-width: 768px) {
-  .services__grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-  
   .benefits__grid {
     grid-template-columns: 1fr;
     max-width: 400px;
@@ -338,7 +332,8 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
 @media (max-width: 960px) {
   .grid--2 { grid-template-columns: 1fr; }
   .portfolio__grid { grid-template-columns: 1fr; }
-  .clients__grid { grid-template-columns: repeat(3, 1fr); }
+  .clients__grid { justify-content: center; }
+  .clients__item { flex: 0 0 calc(50% - var(--space-5)); }
   .clients__media { min-height: 130px; }
   .clients__item { min-height: 44px; }
   .contact__grid { grid-template-columns: 1fr; }
@@ -702,7 +697,8 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   }
   
   .portfolio__grid { grid-template-columns: 1fr; }
-  .clients__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .clients__grid { justify-content: center; }
+  .clients__item { flex: 0 0 calc(50% - var(--space-5)); }
   .clients__item { min-height: 44px; }
   .clients__media { min-height: 100px; }
   .clients__label { font-size: .85rem; }
@@ -712,6 +708,11 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   .about__actions { flex-direction: column; align-items: stretch; }
   .button--large { width: 100%; min-height: 48px; }
   .testimonials__buttons { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 360px) {
+  .clients__grid { justify-content: center; }
+  .clients__item { flex: 0 0 calc(100% - var(--space-5)); padding: var(--space-2); }
 }
 
 /* High refresh rate optimizations */
@@ -753,14 +754,269 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   flex-wrap: wrap;
 }
 
-.services__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
+/* Services Layout */
+.services__carousel {
   margin-top: var(--space-6);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Desktop: Normal grid layout */
+@media (min-width: 1025px) {
+  .services__carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  
+  .carousel__container {
+    display: contents;
+  }
+  
+  .carousel__track {
+    display: contents;
+  }
+  
+  .carousel__navigation {
+    display: none;
+  }
+  
+  /* 4-card services (Social/Discord/Web pages) */
+  .services__carousel:has(.social-service-icon),
+  .services__carousel:has(.discord-service-icon),
+  .services__carousel:has(.web-service-icon) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Skills carousel specific desktop layout */
+  .services__carousel:has(.skill__category) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  
+  .services__carousel:has(.skill__category) .carousel__container {
+    display: contents;
+  }
+  
+  .services__carousel:has(.skill__category) .carousel__track {
+    display: contents;
+  }
+  
+  .services__carousel:has(.skill__category) .carousel__navigation {
+    display: none;
+  }
+  
+  /* Reset skill category styles for desktop grid */
+  .services__carousel:has(.skill__category) .skill__category {
+    flex: none;
+    transform: none;
+    transition: none;
+  }
+  
+  .services__carousel:has(.skill__category) .skill__category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Reset card styles for desktop grid */
+  .services__carousel .card,
+  .services__carousel .service-card {
+    flex: none;
+    transform: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .services__carousel .card:hover,
+  .services__carousel .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Mobile: Carousel layout */
+@media (max-width: 1024px) {
+  .carousel__container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .carousel__track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 300%; /* 3 cards * 100% each */
+    align-items: stretch;
+    will-change: transform;
+  }
+
+  .carousel__track .service-card {
+    flex: 0 0 33.333333%; /* 100% / 3 cards */
+    min-width: 0;
+    padding: var(--space-6);
+    margin: 0;
+    box-sizing: border-box;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track .service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .carousel__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  .carousel__btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel__btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .carousel__btn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel__btn:hover::before {
+    left: 100%;
+  }
+
+  .carousel__btn:active {
+    transform: translateY(-1px) scale(0.95);
+    transition: all 0.1s ease;
+  }
+
+  .carousel__btn:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+  }
+
+  @keyframes ripple {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
+  }
+
+  .carousel__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .carousel__btn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel__indicators {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .carousel__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel__indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--accent);
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translate(-50%, -50%);
+  }
+
+  .carousel__indicator:hover {
+    transform: scale(1.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel__indicator.active {
+    background: var(--accent);
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(var(--accent-rgb), 0.3);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .carousel__indicator.active::before {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(var(--accent-rgb), 0.3);
+    }
+    to {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 30px rgba(var(--accent-rgb), 0.6);
+    }
+  }
 }
 
 .service-card {
@@ -1075,6 +1331,33 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   color: white;
 }
 
+.web-service-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  border-radius: 12px;
+}
+
+.web-service-icon.ecommerce {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+}
+
+.web-service-icon.consulting {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+}
+
+.web-service-icon.websites {
+  background: linear-gradient(135deg, #45b7d1, #96c93d);
+}
+
+.web-service-icon.support {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1152,41 +1435,72 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
   border-radius: var(--radius);
   padding: var(--space-6);
   transition: transform .2s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .skill__category:hover {
   transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .skill__category h3 {
-  margin: 0 0 var(--space-4);
+  margin: 0 0 var(--space-5);
   color: var(--accent);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-3);
-  font-size: 1.2rem;
-  flex-wrap: wrap;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .skill__category h3 i {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   flex-shrink: 0;
 }
 
 .skill__items {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  justify-content: center;
+  align-items: center;
 }
 
 .skill__item {
-  background: rgba(122,162,247,.1);
+  background: linear-gradient(135deg, rgba(122,162,247,.15), rgba(122,162,247,.05));
   color: var(--accent);
-  padding: var(--space-2) var(--space-3);
-  border-radius: 20px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: 25px;
   font-size: .9rem;
+  font-weight: 500;
+  border: 1px solid rgba(122,162,247,.2);
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-align: center;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   white-space: nowrap;
-  min-width: fit-content;
+}
+
+.skill__item:hover {
+  background: linear-gradient(135deg, rgba(122,162,247,.25), rgba(122,162,247,.1));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(122,162,247,.2);
+  border-color: rgba(122,162,247,.4);
+}
+
+/* Auto-animation for skill items - using same transitions as hover */
+.skill__item.animate-active {
+  background: linear-gradient(135deg, rgba(122,162,247,.25), rgba(122,162,247,.1));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(122,162,247,.2);
+  border-color: rgba(122,162,247,.4);
 }
 
 /* Hide mobile menu footer and social icons on desktop */
@@ -1235,6 +1549,209 @@ select.input { appearance: none; background-image: url("data:image/svg+xml;chars
     .nav-menu__footer {
       padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
     }
+  }
+}
+
+/* Carousel specific responsive adjustments */
+/* Mobile medi - tra 481px e 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .carousel__track {
+    width: 300%;
+  }
+  
+  .carousel__track .service-card {
+    flex: 0 0 33.333333%;
+    padding: var(--space-5);
+  }
+  
+  /* For 4-card carousels (like web services) */
+  .carousel__track:has(.card) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* For 4-card carousels (like social services) */
+  .carousel__track:has(.social-service-icon) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track:has(.social-service-icon) .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+  }
+  
+  /* For 4-card carousels (like discord/web services) */
+  .carousel__track:has(.discord-service-icon),
+  .carousel__track:has(.web-service-icon) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track:has(.discord-service-icon) .card,
+  .carousel__track:has(.web-service-icon) .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+  }
+  
+  /* For 3-skill carousels (like skills sections) */
+  .carousel__track:has(.skill__category) {
+    width: 300%; /* 3 skills * 100% each */
+  }
+  
+  .carousel__track:has(.skill__category) .skill__category {
+    flex: 0 0 33.333333%; /* 100% / 3 skills */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track:has(.skill__category) .skill__category:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Tablet - assicura che il carousel funzioni bene */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carousel__track {
+    width: 300%;
+  }
+  
+  .carousel__track .service-card {
+    flex: 0 0 33.333333%;
+    padding: var(--space-6);
+  }
+  
+  /* For 4-card carousels (like web services) */
+  .carousel__track:has(.card) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* For 4-card carousels (like social services) */
+  .carousel__track:has(.social-service-icon) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track:has(.social-service-icon) .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+  }
+  
+  /* For 4-card carousels (like discord/web services) */
+  .carousel__track:has(.discord-service-icon),
+  .carousel__track:has(.web-service-icon) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track:has(.discord-service-icon) .card,
+  .carousel__track:has(.web-service-icon) .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+  }
+  
+  /* For 3-skill carousels (like skills sections) */
+  .carousel__track:has(.skill__category) {
+    width: 300%; /* 3 skills * 100% each */
+  }
+  
+  .carousel__track:has(.skill__category) .skill__category {
+    flex: 0 0 33.333333%; /* 100% / 3 skills */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track:has(.skill__category) .skill__category:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Mobile molto piccoli - assicura che le card siano perfettamente separate */
+@media (max-width: 480px) {
+  .services__carousel {
+    max-width: 100%;
+    padding: 0 var(--space-2);
+  }
+  
+  .carousel__container {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .carousel__track {
+    width: 300%;
+  }
+  
+  .carousel__track .service-card {
+    flex: 0 0 33.333333%;
+    padding: var(--space-4);
+  }
+  
+  /* For 4-card carousels (like web services) */
+  .carousel__track:has(.card) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* For 4-card carousels (like social services) */
+  .carousel__track:has(.social-service-icon) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track:has(.social-service-icon) .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+  }
+  
+  /* For 4-card carousels (like discord/web services) */
+  .carousel__track:has(.discord-service-icon),
+  .carousel__track:has(.web-service-icon) {
+    width: 400%; /* 4 cards * 100% each */
+  }
+  
+  .carousel__track:has(.discord-service-icon) .card,
+  .carousel__track:has(.web-service-icon) .card {
+    flex: 0 0 25%; /* 100% / 4 cards */
+  }
+  
+  /* For 3-skill carousels (like skills sections) */
+  .carousel__track:has(.skill__category) {
+    width: 300%; /* 3 skills * 100% each */
+  }
+  
+  .carousel__track:has(.skill__category) .skill__category {
+    flex: 0 0 33.333333%; /* 100% / 3 skills */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+  }
+
+  .carousel__track:has(.skill__category) .skill__category:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 }
 

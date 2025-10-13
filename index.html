@@ -116,57 +116,76 @@
           <h2 class="h2 section__title">Cosa posso fare per te</h2>
           <p class="section__subtitle">Ecco le aree in cui posso aiutarti a far crescere il tuo business digitale.</p>
           
-          <div class="services__grid">
-            <article class="service-card">
-              <div class="service-card__icon web">
-                <i class="fas fa-laptop-code"></i>
-              </div>
-              <div class="service-card__content">
-                <h3>Web & E-Commerce</h3>
-                <p>Siti web professionali e negozi online che funzionano davvero. Design responsive, SEO e conversioni ottimizzate.</p>
-                <ul class="service-card__features">
-                  <li>✅ Siti web responsive</li>
-                  <li>✅ E-commerce personalizzati</li>
-                  <li>✅ SEO e ottimizzazioni</li>
-                  <li>✅ Consulenza digitale</li>
-                </ul>
-                <a class="button button--primary" href="web.html">Scopri di più</a>
-              </div>
-            </article>
+          <div class="services__carousel">
+            <div class="carousel__container">
+              <div class="carousel__track" id="services-carousel-track">
+                <article class="service-card">
+                  <div class="service-card__icon web">
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <div class="service-card__content">
+                    <h3>Web & E-Commerce</h3>
+                    <p>Siti web professionali e negozi online che funzionano davvero. Design responsive, SEO e conversioni ottimizzate.</p>
+                    <ul class="service-card__features">
+                      <li>✅ Siti web responsive</li>
+                      <li>✅ E-commerce personalizzati</li>
+                      <li>✅ SEO e ottimizzazioni</li>
+                      <li>✅ Consulenza digitale</li>
+                    </ul>
+                    <a class="button button--primary" href="web.html">Scopri di più</a>
+                  </div>
+                </article>
 
-            <article class="service-card">
-              <div class="service-card__icon social">
-                <i class="fas fa-share-alt"></i>
-              </div>
-              <div class="service-card__content">
-                <h3>Social Media Manager</h3>
-                <p>Gestisco la tua presenza su Instagram, TikTok e Facebook per far crescere la tua community e aumentare le vendite.</p>
-                <ul class="service-card__features">
-                  <li>✅ Instagram & TikTok</li>
-                  <li>✅ Facebook Business</li>
-                  <li>✅ Content creation</li>
-                  <li>✅ Strategia social</li>
-                </ul>
-                <a class="button button--primary" href="social.html">Scopri di più</a>
-              </div>
-            </article>
+                <article class="service-card">
+                  <div class="service-card__icon social">
+                    <i class="fas fa-share-alt"></i>
+                  </div>
+                  <div class="service-card__content">
+                    <h3>Social Media Manager</h3>
+                    <p>Gestisco la tua presenza su Instagram, TikTok e Facebook per far crescere la tua community e aumentare le vendite.</p>
+                    <ul class="service-card__features">
+                      <li>✅ Instagram & TikTok</li>
+                      <li>✅ Facebook Business</li>
+                      <li>✅ Content creation</li>
+                      <li>✅ Strategia social</li>
+                    </ul>
+                    <a class="button button--primary" href="social.html">Scopri di più</a>
+                  </div>
+                </article>
 
-            <article class="service-card">
-              <div class="service-card__icon discord">
-                <i class="fa-brands fa-discord"></i>
+                <article class="service-card">
+                  <div class="service-card__icon discord">
+                    <i class="fa-brands fa-discord"></i>
+                  </div>
+                  <div class="service-card__content">
+                    <h3>Discord Expert</h3>
+                    <p>Bot personalizzati, setup server e automazione per trasformare la tua comunità Discord in un ambiente professionale.</p>
+                    <ul class="service-card__features">
+                      <li>✅ Bot personalizzati</li>
+                      <li>✅ Setup server</li>
+                      <li>✅ Automazione</li>
+                      <li>✅ Moderazione</li>
+                    </ul>
+                    <a class="button button--primary" href="discord.html">Scopri di più</a>
+                  </div>
+                </article>
               </div>
-              <div class="service-card__content">
-                <h3>Discord Expert</h3>
-                <p>Bot personalizzati, setup server e automazione per trasformare la tua comunità Discord in un ambiente professionale.</p>
-                <ul class="service-card__features">
-                  <li>✅ Bot personalizzati</li>
-                  <li>✅ Setup server</li>
-                  <li>✅ Automazione</li>
-                  <li>✅ Moderazione</li>
-                </ul>
-                <a class="button button--primary" href="discord.html">Scopri di più</a>
+            </div>
+            
+            <!-- Carousel Navigation -->
+            <div class="carousel__navigation">
+              <button class="carousel__btn carousel__btn--prev" id="carousel-prev" aria-label="Card precedente">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="carousel__indicators" id="carousel-indicators">
+                <button class="carousel__indicator active" data-slide="0" aria-label="Vai alla card 1"></button>
+                <button class="carousel__indicator" data-slide="1" aria-label="Vai alla card 2"></button>
+                <button class="carousel__indicator" data-slide="2" aria-label="Vai alla card 3"></button>
               </div>
-            </article>
+              <button class="carousel__btn carousel__btn--next" id="carousel-next" aria-label="Card successiva">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -177,7 +196,7 @@
           <p class="section__subtitle">Ecco cosa mi rende diverso dagli altri.</p>
           
           <div class="methodology__note">
-            <p><strong>💡 Il mio metodo:</strong> Noterai che tutti i miei processi sono composti da 4 punti. Non è casuale: 4 è il numero perfetto per la mente umana - facile da ricordare, completo ma non opprimente, e si dispone perfettamente in un layout 2x2 bilanciato.</p>
+            <p><strong>💡 Il mio metodo:</strong> Noterai che tutti i miei processi sono composti da 4 punti. Non è casuale: 4 è il numero perfetto per la mente umana - facile da ricordare, completo ma non opprimente.</p>
           </div>
           
           <div class="benefits__grid">

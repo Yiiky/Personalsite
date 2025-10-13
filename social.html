@@ -151,62 +151,83 @@
           <h2 class="h2 section__title">Cosa posso fare per te</h2>
           <p class="section__subtitle">Dal content creation alla strategia completa, ecco come posso aiutarti sui social.</p>
           
-          <div class="portfolio__grid">
-            <article class="card">
-              <a class="card__link" href="#social-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="social-service-icon instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Instagram</h3>
-                  <p class="card__tags">Feed coordinato • Stories coinvolgenti • Reels virali • Crescita organica</p>
-                </div>
-              </a>
-            </article>
+          <!-- SOCIAL SERVICES CAROUSEL -->
+          <div class="services__carousel">
+            <div class="carousel__container">
+              <div class="carousel__track" id="social-services-carousel-track">
+                <article class="card">
+                  <a class="card__link" href="#social-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="social-service-icon instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Instagram</h3>
+                      <p class="card__tags">Feed coordinato • Stories coinvolgenti • Reels virali • Crescita organica</p>
+                    </div>
+                  </a>
+                </article>
 
-            <article class="card">
-              <a class="card__link" href="#social-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="social-service-icon tiktok">
-                    <i class="fa-brands fa-tiktok"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">TikTok</h3>
-                  <p class="card__tags">Video virali • Trend analysis • Hashtag strategy • Crescita esplosiva</p>
-                </div>
-              </a>
-            </article>
+                <article class="card">
+                  <a class="card__link" href="#social-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="social-service-icon tiktok">
+                        <i class="fa-brands fa-tiktok"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">TikTok</h3>
+                      <p class="card__tags">Video virali • Trend analysis • Hashtag strategy • Crescita esplosiva</p>
+                    </div>
+                  </a>
+                </article>
 
-            <article class="card">
-              <a class="card__link" href="#social-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="social-service-icon facebook">
-                    <i class="fa-brands fa-facebook"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Facebook</h3>
-                  <p class="card__tags">Pagine business • Post coinvolgenti • Community building • Ads management</p>
-                </div>
-              </a>
-            </article>
+                <article class="card">
+                  <a class="card__link" href="#social-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="social-service-icon facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Facebook</h3>
+                      <p class="card__tags">Pagine business • Post coinvolgenti • Community building • Ads management</p>
+                    </div>
+                  </a>
+                </article>
 
-            <article class="card">
-              <a class="card__link" href="#social-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="social-service-icon strategy">
-                    <i class="fas fa-chart-line"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Strategia Completa</h3>
-                  <p class="card__tags">Piano editoriale • Brand identity • Analytics • Crescita sostenibile</p>
-                </div>
-              </a>
-            </article>
+                <article class="card">
+                  <a class="card__link" href="#social-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="social-service-icon strategy">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Strategia Completa</h3>
+                      <p class="card__tags">Piano editoriale • Brand identity • Analytics • Crescita sostenibile</p>
+                    </div>
+                  </a>
+                </article>
+              </div>
+            </div>
+            
+            <!-- Carousel Navigation -->
+            <div class="carousel__navigation">
+              <button class="carousel__btn carousel__btn--prev" id="social-services-carousel-prev" aria-label="Card precedente">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="carousel__indicators" id="social-services-carousel-indicators">
+                <button class="carousel__indicator active" data-slide="0" aria-label="Vai alla card 1"></button>
+                <button class="carousel__indicator" data-slide="1" aria-label="Vai alla card 2"></button>
+                <button class="carousel__indicator" data-slide="2" aria-label="Vai alla card 3"></button>
+                <button class="carousel__indicator" data-slide="3" aria-label="Vai alla card 4"></button>
+              </div>
+              <button class="carousel__btn carousel__btn--next" id="social-services-carousel-next" aria-label="Card successiva">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -216,38 +237,56 @@
           <h2 class="h2 section__title">Le mie competenze social</h2>
           <p class="section__subtitle">Ecco cosa so fare sui social media per far crescere il tuo business.</p>
           
-          <div class="skills__container">
-            <div class="skills__grid">
-            <div class="skill__category">
-              <h3><i class="fas fa-camera"></i> Content Creation</h3>
-              <div class="skill__items">
-                <span class="skill__item">Foto e video professionali</span>
-                <span class="skill__item">Reels e TikTok coinvolgenti</span>
-                <span class="skill__item">Stories creative</span>
-                <span class="skill__item">Brand identity</span>
+          <!-- SOCIAL SKILLS CAROUSEL -->
+          <div class="services__carousel">
+            <div class="carousel__container">
+              <div class="carousel__track" id="social-skills-carousel-track">
+                <div class="skill__category">
+                  <h3><i class="fas fa-camera"></i> Content Creation</h3>
+                  <div class="skill__items">
+                    <span class="skill__item">Foto e video professionali</span>
+                    <span class="skill__item">Reels e TikTok coinvolgenti</span>
+                    <span class="skill__item">Stories creative</span>
+                    <span class="skill__item">Brand identity</span>
+                  </div>
+                </div>
+                
+                <div class="skill__category">
+                  <h3><i class="fas fa-chart-bar"></i> Strategia e Analytics</h3>
+                  <div class="skill__items">
+                    <span class="skill__item">Piano editoriale</span>
+                    <span class="skill__item">Analisi competitor</span>
+                    <span class="skill__item">Metriche e KPI</span>
+                    <span class="skill__item">ROI tracking</span>
+                  </div>
+                </div>
+                
+                <div class="skill__category">
+                  <h3><i class="fas fa-users"></i> Community Management</h3>
+                  <div class="skill__items">
+                    <span class="skill__item">Engagement strategy</span>
+                    <span class="skill__item">Hashtag research</span>
+                    <span class="skill__item">Influencer marketing</span>
+                    <span class="skill__item">Crisis management</span>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="skill__category">
-              <h3><i class="fas fa-chart-bar"></i> Strategia e Analytics</h3>
-              <div class="skill__items">
-                <span class="skill__item">Piano editoriale</span>
-                <span class="skill__item">Analisi competitor</span>
-                <span class="skill__item">Metriche e KPI</span>
-                <span class="skill__item">ROI tracking</span>
+            <!-- Carousel Navigation -->
+            <div class="carousel__navigation">
+              <button class="carousel__btn carousel__btn--prev" id="social-skills-carousel-prev" aria-label="Competenza precedente">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="carousel__indicators" id="social-skills-carousel-indicators">
+                <button class="carousel__indicator active" data-slide="0" aria-label="Vai alla competenza 1"></button>
+                <button class="carousel__indicator" data-slide="1" aria-label="Vai alla competenza 2"></button>
+                <button class="carousel__indicator" data-slide="2" aria-label="Vai alla competenza 3"></button>
               </div>
+              <button class="carousel__btn carousel__btn--next" id="social-skills-carousel-next" aria-label="Competenza successiva">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
-            
-            <div class="skill__category">
-              <h3><i class="fas fa-users"></i> Community Management</h3>
-              <div class="skill__items">
-                <span class="skill__item">Engagement strategy</span>
-                <span class="skill__item">Hashtag research</span>
-                <span class="skill__item">Influencer marketing</span>
-                <span class="skill__item">Crisis management</span>
-              </div>
-            </div>
-          </div>
           </div>
         </div>
       </section>

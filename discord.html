@@ -138,62 +138,83 @@
           <h2 class="h2 section__title">Cosa posso fare per te</h2>
           <p class="section__subtitle">Dal setup base ai bot più complessi, ecco come posso aiutarti a migliorare il tuo server Discord.</p>
           
-          <div class="portfolio__grid">
-            <article class="card">
-              <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="discord-service-icon">
-                    <i class="fa-brands fa-discord"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Setup Server</h3>
-                  <p class="card__tags">Configuro tutto: ruoli, canali, permessi e sistema di moderazione</p>
-                </div>
-              </a>
-            </article>
+          <!-- DISCORD SERVICES CAROUSEL -->
+          <div class="services__carousel">
+            <div class="carousel__container">
+              <div class="carousel__track" id="discord-services-carousel-track">
+                <article class="card">
+                  <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="discord-service-icon">
+                        <i class="fa-brands fa-discord"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Setup Server</h3>
+                      <p class="card__tags">Configuro tutto: ruoli, canali, permessi e sistema di moderazione</p>
+                    </div>
+                  </a>
+                </article>
 
-            <article class="card">
-              <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="discord-service-icon">
-                    <i class="fas fa-robot"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Bot Personalizzati</h3>
-                  <p class="card__tags">Bot fatti su misura per le tue esigenze specifiche</p>
-                </div>
-              </a>
-            </article>
+                <article class="card">
+                  <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="discord-service-icon">
+                        <i class="fas fa-robot"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Bot Personalizzati</h3>
+                      <p class="card__tags">Bot fatti su misura per le tue esigenze specifiche</p>
+                    </div>
+                  </a>
+                </article>
 
-            <article class="card">
-              <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="discord-service-icon">
-                    <i class="fas fa-cogs"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Automazione</h3>
-                  <p class="card__tags">Sistemi automatici per gestire la tua comunità senza sforzo</p>
-                </div>
-              </a>
-            </article>
+                <article class="card">
+                  <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="discord-service-icon">
+                        <i class="fas fa-cogs"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Automazione</h3>
+                      <p class="card__tags">Sistemi automatici per gestire la tua comunità senza sforzo</p>
+                    </div>
+                  </a>
+                </article>
 
-            <article class="card">
-              <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
-                <figure class="card__figure">
-                  <div class="discord-service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                  </div>
-                </figure>
-                <div class="card__body">
-                  <h3 class="card__title">Moderazione</h3>
-                  <p class="card__tags">Sistemi di sicurezza e moderazione per mantenere il server pulito</p>
-                </div>
-              </a>
-            </article>
+                <article class="card">
+                  <a class="card__link" href="#discord-contact" rel="noopener noreferrer">
+                    <figure class="card__figure">
+                      <div class="discord-service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                      </div>
+                    </figure>
+                    <div class="card__body">
+                      <h3 class="card__title">Moderazione</h3>
+                      <p class="card__tags">Sistemi di sicurezza e moderazione per mantenere il server pulito</p>
+                    </div>
+                  </a>
+                </article>
+              </div>
+            </div>
+            
+            <!-- Carousel Navigation -->
+            <div class="carousel__navigation">
+              <button class="carousel__btn carousel__btn--prev" id="discord-services-carousel-prev" aria-label="Card precedente">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="carousel__indicators" id="discord-services-carousel-indicators">
+                <button class="carousel__indicator active" data-slide="0" aria-label="Vai alla card 1"></button>
+                <button class="carousel__indicator" data-slide="1" aria-label="Vai alla card 2"></button>
+                <button class="carousel__indicator" data-slide="2" aria-label="Vai alla card 3"></button>
+                <button class="carousel__indicator" data-slide="3" aria-label="Vai alla card 4"></button>
+              </div>
+              <button class="carousel__btn carousel__btn--next" id="discord-services-carousel-next" aria-label="Card successiva">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -203,38 +224,56 @@
           <h2 class="h2 section__title">Le tecnologie che uso</h2>
           <p class="section__subtitle">Ecco gli strumenti che utilizzo per creare bot e configurare server Discord.</p>
           
-          <div class="skills__container">
-            <div class="skills__grid">
-            <div class="skill__category">
-              <h3><i class="fab fa-python"></i> Sviluppo Bot</h3>
-              <div class="skill__items">
-                <span class="skill__item">Python & Discord.py</span>
-                <span class="skill__item">Database SQLite/PostgreSQL</span>
-                <span class="skill__item">API REST</span>
-                <span class="skill__item">Webhook</span>
+          <!-- DISCORD SKILLS CAROUSEL -->
+          <div class="services__carousel">
+            <div class="carousel__container">
+              <div class="carousel__track" id="discord-skills-carousel-track">
+                <div class="skill__category">
+                  <h3><i class="fab fa-python"></i> Sviluppo Bot</h3>
+                  <div class="skill__items">
+                    <span class="skill__item">Python & Discord.py</span>
+                    <span class="skill__item">Database SQLite/PostgreSQL</span>
+                    <span class="skill__item">API REST</span>
+                    <span class="skill__item">Webhook</span>
+                  </div>
+                </div>
+                
+                <div class="skill__category">
+                  <h3><i class="fas fa-server"></i> Server Management</h3>
+                  <div class="skill__items">
+                    <span class="skill__item">Configurazione server</span>
+                    <span class="skill__item">Gestione ruoli</span>
+                    <span class="skill__item">Organizzazione canali</span>
+                    <span class="skill__item">Sistemi di moderazione</span>
+                  </div>
+                </div>
+                
+                <div class="skill__category">
+                  <h3><i class="fas fa-link"></i> Integrazioni</h3>
+                  <div class="skill__items">
+                    <span class="skill__item">Integrazione social</span>
+                    <span class="skill__item">Notifiche automatiche</span>
+                    <span class="skill__item">API esterne</span>
+                    <span class="skill__item">Sistemi di logging</span>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="skill__category">
-              <h3><i class="fas fa-server"></i> Server Management</h3>
-              <div class="skill__items">
-                <span class="skill__item">Configurazione server</span>
-                <span class="skill__item">Gestione ruoli</span>
-                <span class="skill__item">Organizzazione canali</span>
-                <span class="skill__item">Sistemi di moderazione</span>
+            <!-- Carousel Navigation -->
+            <div class="carousel__navigation">
+              <button class="carousel__btn carousel__btn--prev" id="discord-skills-carousel-prev" aria-label="Competenza precedente">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="carousel__indicators" id="discord-skills-carousel-indicators">
+                <button class="carousel__indicator active" data-slide="0" aria-label="Vai alla competenza 1"></button>
+                <button class="carousel__indicator" data-slide="1" aria-label="Vai alla competenza 2"></button>
+                <button class="carousel__indicator" data-slide="2" aria-label="Vai alla competenza 3"></button>
               </div>
+              <button class="carousel__btn carousel__btn--next" id="discord-skills-carousel-next" aria-label="Competenza successiva">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
-            
-            <div class="skill__category">
-              <h3><i class="fas fa-link"></i> Integrazioni</h3>
-              <div class="skill__items">
-                <span class="skill__item">Integrazione social</span>
-                <span class="skill__item">Notifiche automatiche</span>
-                <span class="skill__item">API esterne</span>
-                <span class="skill__item">Sistemi di logging</span>
-              </div>
-            </div>
-          </div>
           </div>
         </div>
       </section>
