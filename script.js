@@ -99,6 +99,16 @@
         closeMobileMenu();
       }
     });
+    
+    // Close menu when clicking outside the menu
+    document.addEventListener('click', function(e) {
+      if (navMenu.classList.contains('is-open')) {
+        // Check if the click is outside the menu and not on the toggle button
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      }
+    });
   }
 
   // IntersectionObserver for reveal-on-scroll animations
