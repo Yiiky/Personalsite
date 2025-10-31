@@ -1105,4 +1105,46 @@
   });
 })();
 
+// Back to Top Button Functionality
+(function() {
+  const backToTopButton = document.getElementById('backToTop');
+  
+  if (!backToTopButton) return;
+  
+  // Show/hide button based on scroll position
+  function toggleBackToTopButton() {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  }
+  
+  // Scroll to top function
+  function scrollToTop() {
+    // Find the contact section (the one with WhatsApp button)
+    const contactSection = document.querySelector('#social-contact, #contact, #discord-contact');
+    
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback to top of page
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+  
+  // Event listeners
+  window.addEventListener('scroll', toggleBackToTopButton);
+  backToTopButton.addEventListener('click', scrollToTop);
+  
+  // Initial check
+  toggleBackToTopButton();
+})();
+
 
